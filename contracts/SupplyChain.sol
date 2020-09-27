@@ -68,6 +68,17 @@ contract SupplyChain {
     items[_sku].buyer.transfer(amountToRefund);
   }
 
+  //   modifier PaidEnoughCheckValue(uint _price, uint _sku) {
+  //   // require that payment is enough
+  //   require(msg.value >= _price); 
+  //   _;
+
+  //   //refund them after pay for item (why it is before, _ checks for logic before func)
+  //   uint _price = items[_sku].price;
+  //   uint amountToRefund = msg.value - _price;
+  //   items[_sku].buyer.transfer(amountToRefund);
+  // }
+
   /* For each of the following modifiers, use what you learned about modifiers
    to give them functionality. For example, the forSale modifier should require
    that the item with the given sku has the state ForSale. 
@@ -107,6 +118,7 @@ contract SupplyChain {
     forSale(sku) // sku vs _sku?
     paidEnough(items[sku].price)
     checkValue(sku)
+    // PaidEnoughCheckValue(items[sku].price, sku)
   {
     emit LogSold(sku);
     items[sku].buyer = msg.sender;
